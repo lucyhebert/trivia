@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -7,6 +8,8 @@ namespace Trivia
     public class Game
     {
         readonly List<Player> _players = new List<Player>();
+
+        readonly List<string> _categories = new List<string>();
 
         readonly LinkedList<string> _popQuestions = new LinkedList<string>();
         readonly LinkedList<string> _scienceQuestions = new LinkedList<string>();
@@ -18,6 +21,11 @@ namespace Trivia
 
         public Game()
         {
+            _categories.Add("Pop");
+            _categories.Add("Science");
+            _categories.Add("Sports");
+            _categories.Add("Rock");
+
             for (int i = 0; i < 50; i++)
             {
                 _popQuestions.AddLast("Pop Question " + i);
@@ -123,10 +131,10 @@ namespace Trivia
         private string CurrentCategory()
         {
             string currentCategory = "";
-            if (CurrentPlayer().Place % 4 == 0) currentCategory = "Pop";
-            if (CurrentPlayer().Place % 4 == 1) currentCategory = "Science";
-            if (CurrentPlayer().Place % 4 == 2) currentCategory = "Sports";
-            if (CurrentPlayer().Place % 4 == 3) currentCategory = "Rock";
+            for (int i = 0; i < _categories.Count; i++)
+            {
+                if (CurrentPlayer().Place % 4 == i) currentCategory = _categories[i];
+            }
             return currentCategory;
         }
 

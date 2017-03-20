@@ -21,23 +21,27 @@ namespace Trivia
 
         public Game()
         {
+            PopulateCategories();
+            AddQuestions();
+        }
+
+        private void PopulateCategories()
+        {
             _categories.Add("Pop");
             _categories.Add("Science");
             _categories.Add("Sports");
             _categories.Add("Rock");
+        }
 
+        public void AddQuestions()
+        {
             for (int i = 0; i < 50; i++)
             {
                 _popQuestions.AddLast("Pop Question " + i);
-                _scienceQuestions.AddLast(("Science Question " + i));
-                _sportsQuestions.AddLast(("Sports Question " + i));
-                _rockQuestions.AddLast(CreateRockQuestion(i));
+                _scienceQuestions.AddLast("Science Question " + i);
+                _sportsQuestions.AddLast("Sports Question " + i);
+                _rockQuestions.AddLast("Rock Question " + i);
             }
-        }
-
-        public string CreateRockQuestion(int index)
-        {
-            return "Rock Question " + index;
         }
 
         public bool IsPlayable()
@@ -82,7 +86,7 @@ namespace Trivia
                     Console.WriteLine(CurrentPlayer().PlayerName
                             + "'s new location is "
                             + CurrentPlayer().Place);
-                    Console.WriteLine("The category is " + CurrentCategory());
+                    Console.WriteLine("The category is " + CurrentCategory(CurrentPlayer().Place));
                     AskQuestion();
                 }
                 else
@@ -99,41 +103,41 @@ namespace Trivia
                 Console.WriteLine(CurrentPlayer().PlayerName
                         + "'s new location is "
                         + CurrentPlayer().Place);
-                Console.WriteLine("The category is " + CurrentCategory());
+                Console.WriteLine("The category is " + CurrentCategory(CurrentPlayer().Place));
                 AskQuestion();
             }
         }
 
         private void AskQuestion()
         {
-            if (CurrentCategory() == "Pop")
+            if (CurrentCategory(CurrentPlayer().Place) == "Pop")
             {
                 Console.WriteLine(_popQuestions.First());
                 _popQuestions.RemoveFirst();
             }
-            if (CurrentCategory() == "Science")
+            if (CurrentCategory(CurrentPlayer().Place) == "Science")
             {
                 Console.WriteLine(_scienceQuestions.First());
                 _scienceQuestions.RemoveFirst();
             }
-            if (CurrentCategory() == "Sports")
+            if (CurrentCategory(CurrentPlayer().Place) == "Sports")
             {
                 Console.WriteLine(_sportsQuestions.First());
                 _sportsQuestions.RemoveFirst();
             }
-            if (CurrentCategory() == "Rock")
+            if (CurrentCategory(CurrentPlayer().Place) == "Rock")
             {
                 Console.WriteLine(_rockQuestions.First());
                 _rockQuestions.RemoveFirst();
             }
         }
 
-        private string CurrentCategory()
+        private string CurrentCategory(int index)
         {
             string currentCategory = "";
             for (int i = 0; i < _categories.Count; i++)
             {
-                if (CurrentPlayer().Place % 4 == i) currentCategory = _categories[i];
+                if (index % 4 == i) currentCategory = _categories[i];
             }
             return currentCategory;
         }

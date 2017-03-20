@@ -4,7 +4,6 @@ namespace Trivia
 {
     public class GameRunner
     {
-
         private static bool _isAWinner;
 
         public static void Main(string[] args)
@@ -22,7 +21,6 @@ namespace Trivia
 
                 do
                 {
-
                     aGame.Roll(rand.Next(5) + 1);
 
                     if (rand.Next(9) == 7)
@@ -33,15 +31,9 @@ namespace Trivia
                     {
                         _isAWinner = aGame.WasCorrectlyAnswered();
                     }
-
-
-
                 } while (_isAWinner);
             }
         }
-
-
     }
-
 }
 

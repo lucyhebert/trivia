@@ -8,8 +8,6 @@ namespace Trivia
     {
         readonly List<Player> _players = new List<Player>();
 
-        readonly List<string> _categories = new List<string>();
-
         readonly LinkedList<string> _popQuestions = new LinkedList<string>();
         readonly LinkedList<string> _scienceQuestions = new LinkedList<string>();
         readonly LinkedList<string> _sportsQuestions = new LinkedList<string>();
@@ -20,9 +18,6 @@ namespace Trivia
 
         public Game()
         {
-            _categories.Add("Pop");
-            _categories.Add("Science");
-            _categories.Add("Sports");
             for (int i = 0; i < 50; i++)
             {
                 _popQuestions.AddLast("Pop Question " + i);
@@ -44,8 +39,6 @@ namespace Trivia
 
         public bool Add(string playerName)
         {
-
-
             _players.Add(new Player(playerName));
 
             Console.WriteLine(playerName + " was added");
@@ -89,11 +82,9 @@ namespace Trivia
                     Console.WriteLine(CurrentPlayer().PlayerName + " is not getting out of the penalty box");
                     _isGettingOutOfPenaltyBox = false;
                 }
-
             }
             else
             {
-
                 CurrentPlayer().Place = CurrentPlayer().Place + roll;
                 if (CurrentPlayer().Place > 11) CurrentPlayer().Place = CurrentPlayer().Place - 12;
 
@@ -103,7 +94,6 @@ namespace Trivia
                 Console.WriteLine("The category is " + CurrentCategory());
                 AskQuestion();
             }
-
         }
 
         private void AskQuestion()
@@ -132,16 +122,12 @@ namespace Trivia
 
         private string CurrentCategory()
         {
-            if (CurrentPlayer().Place == 0) return "Pop";
-            if (CurrentPlayer().Place == 4) return "Pop";
-            if (CurrentPlayer().Place == 8) return "Pop";
-            if (CurrentPlayer().Place == 1) return "Science";
-            if (CurrentPlayer().Place == 5) return "Science";
-            if (CurrentPlayer().Place == 9) return "Science";
-            if (CurrentPlayer().Place == 2) return "Sports";
-            if (CurrentPlayer().Place == 6) return "Sports";
-            if (CurrentPlayer().Place == 10) return "Sports";
-            return "Rock";
+            string currentCategory = "";
+            if (CurrentPlayer().Place % 4 == 0) currentCategory = "Pop";
+            if (CurrentPlayer().Place % 4 == 1) currentCategory = "Science";
+            if (CurrentPlayer().Place % 4 == 2) currentCategory = "Sports";
+            if (CurrentPlayer().Place % 4 == 3) currentCategory = "Rock";
+            return currentCategory;
         }
 
         public bool WasCorrectlyAnswered()
@@ -169,13 +155,9 @@ namespace Trivia
                     if (_currentPlayer == _players.Count) _currentPlayer = 0;
                     return true;
                 }
-
-
-
             }
             else
             {
-
                 Console.WriteLine("Answer was corrent!!!!");
                 CurrentPlayer().Purse++;
                 Console.WriteLine(CurrentPlayer().PlayerName

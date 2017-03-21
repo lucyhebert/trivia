@@ -20,11 +20,6 @@ namespace Trivia
 
         public Game()
         {
-            PopulateCategories();
-        }
-
-        private void PopulateCategories()
-        {
             _categories.Add(_popCategory);
             _categories.Add(_scienceCategory);
             _categories.Add(_sportsCategory);
@@ -40,10 +35,10 @@ namespace Trivia
             return true;
         }
 
-        public bool IsPlayable()
-        {
-            return (_players.Count >= 2);
-        }
+        //public bool IsPlayable()
+        //{
+        //    return (_players.Count >= 2);
+        //}
 
         public Player CurrentPlayer()
         {
@@ -77,34 +72,16 @@ namespace Trivia
 
         private void AskQuestion()
         {
-            if (CurrentCategory(CurrentPlayer().Place) == "Pop")
-            {
-                Console.WriteLine(_popCategory.QuestionList.First());
-                _popCategory.QuestionList.RemoveFirst();
-            }
-            if (CurrentCategory(CurrentPlayer().Place) == "Science")
-            {
-                Console.WriteLine(_scienceCategory.QuestionList.First());
-                _scienceCategory.QuestionList.RemoveFirst();
-            }
-            if (CurrentCategory(CurrentPlayer().Place) == "Sports")
-            {
-                Console.WriteLine(_sportsCategory.QuestionList.First());
-                _sportsCategory.QuestionList.RemoveFirst();
-            }
-            if (CurrentCategory(CurrentPlayer().Place) == "Rock")
-            {
-                Console.WriteLine(_rockCategory.QuestionList.First());
-                _rockCategory.QuestionList.RemoveFirst();
-            }
+            Console.WriteLine(CurrentCategory(CurrentPlayer().Place).QuestionList.First());
+            CurrentCategory(CurrentPlayer().Place).QuestionList.RemoveFirst();
         }
 
-        private string CurrentCategory(int index)
+        private Category CurrentCategory(int index)
         {
-            string currentCategory = "";
+            Category currentCategory = null;
             for (int i = 0; i < _categories.Count; i++)
             {
-                if (index % 4 == i) currentCategory = _categories[i].CategoryName;
+                if (index % 4 == i) currentCategory = _categories[i];
             }
             return currentCategory;
         }

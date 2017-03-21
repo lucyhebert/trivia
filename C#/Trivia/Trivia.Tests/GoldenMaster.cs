@@ -14,10 +14,10 @@ namespace Trivia.Tests
         public void ShouldNotChange()
         {
             var stringWriter = new StringWriter();
-            var previouConsoleOut = Console.Out;
+            var previousConsoleOut = Console.Out;
             Console.SetOut(stringWriter);
             GameRunner.Main(null);
-            Console.SetOut(previouConsoleOut);
+            Console.SetOut(previousConsoleOut);
             Approvals.Verify(stringWriter.ToString());
         }
     }

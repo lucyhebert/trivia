@@ -148,18 +148,7 @@ namespace Trivia
             {
                 if (_isGettingOutOfPenaltyBox)
                 {
-                    Console.WriteLine("Answer was correct!!!!");
-                    CurrentPlayer().Purse++;
-                    Console.WriteLine(CurrentPlayer().PlayerName
-                            + " now has "
-                            + CurrentPlayer().Purse
-                            + " Gold Coins.");
-
-                    bool winner = DidPlayerWin();
-                    _currentPlayer++;
-                    if (_currentPlayer == _players.Count) _currentPlayer = 0;
-
-                    return winner;
+                    return Wins();
                 }
                 else
                 {
@@ -170,19 +159,24 @@ namespace Trivia
             }
             else
             {
-                Console.WriteLine("Answer was corrent!!!!");
-                CurrentPlayer().Purse++;
-                Console.WriteLine(CurrentPlayer().PlayerName
-                        + " now has "
-                        + CurrentPlayer().Purse
-                        + " Gold Coins.");
-
-                bool winner = DidPlayerWin();
-                _currentPlayer++;
-                if (_currentPlayer == _players.Count) _currentPlayer = 0;
-
-                return winner;
+                return Wins();
             }
+        }
+
+        private bool Wins()
+        {
+            Console.WriteLine("Answer was correct!!!!");
+            CurrentPlayer().Purse++;
+            Console.WriteLine(CurrentPlayer().PlayerName
+                    + " now has "
+                    + CurrentPlayer().Purse
+                    + " Gold Coins.");
+
+            bool winner = DidPlayerWin();
+            _currentPlayer++;
+            if (_currentPlayer == _players.Count) _currentPlayer = 0;
+
+            return winner;
         }
 
         public bool WrongAnswer()

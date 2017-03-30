@@ -50,7 +50,7 @@ namespace Trivia
             Console.WriteLine(CurrentPlayer().PlayerName + " is the current player");
             Console.WriteLine("They have rolled a " + roll);
 
-            if (CurrentPlayer().InPenaltyBox || roll % 2 != 0)
+            if (CurrentPlayer().IsInPenaltyBox || roll % 2 != 0)
             {
                 _isGettingOutOfPenaltyBox = true;
                 Console.WriteLine(CurrentPlayer().PlayerName + " is getting out of the penalty box");
@@ -93,7 +93,7 @@ namespace Trivia
 
         public bool WasCorrectlyAnswered()
         {
-            if (CurrentPlayer().InPenaltyBox || _isGettingOutOfPenaltyBox)
+            if (CurrentPlayer().IsInPenaltyBox || _isGettingOutOfPenaltyBox)
             {
                 Console.WriteLine("Answer was correct!!!!");
                 WinAGoldCoin();
@@ -120,7 +120,7 @@ namespace Trivia
         {
             Console.WriteLine("Question was incorrectly answered");
             Console.WriteLine(CurrentPlayer().PlayerName + " was sent to the penalty box");
-            CurrentPlayer().InPenaltyBox = true;
+            CurrentPlayer().IsInPenaltyBox = true;
 
             NextPlayer();
             return true;

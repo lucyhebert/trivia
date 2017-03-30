@@ -11,11 +11,14 @@ namespace Trivia
             int i;
             for (i = 0; i < 10; i++)
             {
-                Game aGame = new Game();
+                Players players = new Players();
 
-                aGame.AddPlayer("Chet");
-                aGame.AddPlayer("Pat");
-                aGame.AddPlayer("Sue");
+                players.AddAPlayer("Chet");
+                players.AddAPlayer("Pat");
+                players.AddAPlayer("Sue");
+
+                Game aGame = new Game(players);
+
 
                 Random rand = new Random(i);
 

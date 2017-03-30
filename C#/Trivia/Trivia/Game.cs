@@ -96,7 +96,7 @@ namespace Trivia
             if (CurrentPlayer().IsInPenaltyBox || _isGettingOutOfPenaltyBox)
             {
                 Console.WriteLine("Answer was correct!!!!");
-                WinAGoldCoin();
+                CurrentPlayer().WinAGoldCoin();
                 NextPlayer();
                 return DidPlayerWin();
             }
@@ -105,15 +105,6 @@ namespace Trivia
                 NextPlayer();
                 return true;
             }
-        }
-
-        private void WinAGoldCoin()
-        {
-            CurrentPlayer().GoldCoins++;
-            Console.WriteLine(CurrentPlayer().PlayerName
-                              + " now has "
-                              + CurrentPlayer().GoldCoins
-                              + " Gold Coins.");
         }
 
         public bool WrongAnswer()

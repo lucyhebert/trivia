@@ -23,5 +23,14 @@ namespace Trivia
             Place = Place + roll;
         }
 
+        public void WinAGoldCoin()
+        {
+            GoldCoins++;
+            Console.WriteLine(PlayerName
+                              + " now has "
+                              + GoldCoins
+                              + " Gold Coins.");
+        }
+
     }
 }

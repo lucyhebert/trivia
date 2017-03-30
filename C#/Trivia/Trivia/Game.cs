@@ -54,7 +54,7 @@ namespace Trivia
             {
                 _isGettingOutOfPenaltyBox = true;
                 Console.WriteLine(CurrentPlayer().PlayerName + " is getting out of the penalty box");
-                CurrentPlayer().Place = CurrentPlayer().Place + roll;
+                Move(roll);
                 if (CurrentPlayer().Place > 11) CurrentPlayer().Place = CurrentPlayer().Place - 12;
 
                 Console.WriteLine(CurrentPlayer().PlayerName
@@ -68,6 +68,11 @@ namespace Trivia
                 Console.WriteLine(CurrentPlayer().PlayerName + " is not getting out of the penalty box");
                 _isGettingOutOfPenaltyBox = false;
             }
+        }
+
+        private void Move(int roll)
+        {
+            CurrentPlayer().Place = CurrentPlayer().Place + roll;
         }
 
         private void AskQuestion()
@@ -91,12 +96,7 @@ namespace Trivia
             if (CurrentPlayer().InPenaltyBox || _isGettingOutOfPenaltyBox)
             {
                 Console.WriteLine("Answer was correct!!!!");
-                CurrentPlayer().Purse++;
-                Console.WriteLine(CurrentPlayer().PlayerName
-                        + " now has "
-                        + CurrentPlayer().Purse
-                        + " Gold Coins.");
-
+                WinAGoldCoin();
                 NextPlayer();
                 return DidPlayerWin();
             }
@@ -105,6 +105,15 @@ namespace Trivia
                 NextPlayer();
                 return true;
             }
+        }
+
+        private void WinAGoldCoin()
+        {
+            CurrentPlayer().GoldCoins++;
+            Console.WriteLine(CurrentPlayer().PlayerName
+                              + " now has "
+                              + CurrentPlayer().GoldCoins
+                              + " Gold Coins.");
         }
 
         public bool WrongAnswer()
@@ -119,7 +128,7 @@ namespace Trivia
 
         private bool DidPlayerWin()
         {
-            return CurrentPlayer().Purse != 6;
+            return CurrentPlayer().GoldCoins != 6;
         }
 
         private void NextPlayer()

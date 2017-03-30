@@ -18,9 +18,10 @@ namespace Trivia
         }
 
 
-        private void Move(int roll)
+        public void Move(int roll)
         {
             Place = Place + roll;
+            if (Place > 11) Place = Place - 12;
         }
 
         public void WinAGoldCoin()
@@ -32,5 +33,14 @@ namespace Trivia
                               + " Gold Coins.");
         }
 
+        public void GoToPenaltyBox()
+        {
+            IsInPenaltyBox = true;
+        }
+
+        public void GoOutFromPenaltyBox()
+        {
+            IsInPenaltyBox = false;
+        }
     }
 }

@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F480710E-556B-45A0-96F3-2E2EB431F5EA}</ProjectGuid>
+    <ProjectGuid>{9ED7F41E-D36F-4725-B3E9-E8DCAF8A2744}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Trivia.Tests</RootNamespace>

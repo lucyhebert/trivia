@@ -16,7 +16,6 @@ namespace Trivia
         private readonly Category _rockCategory = new Category("Rock");
 
         int _currentPlayer;
-        bool _isGettingOutOfPenaltyBox;
 
         public Game()
         {
@@ -52,10 +51,9 @@ namespace Trivia
 
             if (CurrentPlayer().IsInPenaltyBox || roll % 2 != 0)
             {
-                _isGettingOutOfPenaltyBox = true;
+                CurrentPlayer().GoOutFromPenaltyBox();
                 Console.WriteLine(CurrentPlayer().PlayerName + " is getting out of the penalty box");
-                Move(roll);
-                if (CurrentPlayer().Place > 11) CurrentPlayer().Place = CurrentPlayer().Place - 12;
+                CurrentPlayer().Move(roll);
 
                 Console.WriteLine(CurrentPlayer().PlayerName
                         + "'s new location is "
@@ -66,13 +64,8 @@ namespace Trivia
             else
             {
                 Console.WriteLine(CurrentPlayer().PlayerName + " is not getting out of the penalty box");
-                _isGettingOutOfPenaltyBox = false;
+                CurrentPlayer().GoToPenaltyBox();
             }
-        }
-
-        private void Move(int roll)
-        {
-            CurrentPlayer().Place = CurrentPlayer().Place + roll;
         }
 
         private void AskQuestion()
@@ -93,7 +86,7 @@ namespace Trivia
 
         public bool WasCorrectlyAnswered()
         {
-            if (CurrentPlayer().IsInPenaltyBox || _isGettingOutOfPenaltyBox)
+            if (CurrentPlayer().IsInPenaltyBox)
             {
                 Console.WriteLine("Answer was correct!!!!");
                 CurrentPlayer().WinAGoldCoin();

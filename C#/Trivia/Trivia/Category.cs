@@ -10,12 +10,12 @@ namespace Trivia
 
         public Category(string name)
         {
-            this.CategoryName = name;
-            this.QuestionList = new LinkedList<string>();
+            CategoryName = name;
+            QuestionList = new LinkedList<string>();
 
             for (int i = 0; i < 50; i++)
             {
-                this.QuestionList.AddLast(this.CategoryName + " Question " + i);
+                QuestionList.AddLast(CategoryName + " Question " + i);
             }
         }
     }

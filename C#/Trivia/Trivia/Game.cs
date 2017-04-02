@@ -6,8 +6,6 @@ namespace Trivia
 {
     public class Game
     {
-        //readonly List<Player> _players = new List<Player>();
-
         private readonly Players _players;
 
         readonly List<Category> _categories = new List<Category>();
@@ -17,8 +15,6 @@ namespace Trivia
         private readonly Category _sportsCategory = new Category("Sports");
         private readonly Category _rockCategory = new Category("Rock");
 
-        int _currentPlayer;
-
         public Game(Players players)
         {
             _players = players;
@@ -27,15 +23,6 @@ namespace Trivia
             _categories.Add(_sportsCategory);
             _categories.Add(_rockCategory);
         }
-
-        //public bool AddPlayer(string playerName)
-        //{
-        //    _players.AddAPlayer(new Player(playerName));
-
-        //    Console.WriteLine(playerName + " was added");
-        //    Console.WriteLine("They are player number " + _players.NbPlayers());
-        //    return true;
-        //}
 
         //public bool IsPlayable()
         //{

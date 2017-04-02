@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using ApprovalTests;
 using ApprovalTests.Reporters;
 using NUnit.Framework;
 

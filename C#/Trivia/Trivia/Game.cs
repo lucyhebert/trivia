@@ -95,12 +95,6 @@ namespace Trivia
         {
             return _players.CurrentPlayer.GoldCoins != 6;
         }
-
-        //private void NextPlayer()
-        //{
-        //    _currentPlayer++;
-        //    if (_currentPlayer == _players.NbPlayers()) _currentPlayer = 0;
-        //}
     }
 
 }

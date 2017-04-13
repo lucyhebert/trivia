@@ -31,20 +31,13 @@ namespace Trivia
                 Console.WriteLine(_players.CurrentPlayer.PlayerName
                         + "'s new location is "
                         + _players.CurrentPlayer.Place);
-                Console.WriteLine("The category is " + _questions.CurrentCategory(_players.CurrentPlayer.Place));
-                AskQuestion();
+                _questions.AskQuestion(_players.CurrentPlayer.Place);
             }
             else
             {
                 Console.WriteLine(_players.CurrentPlayer.PlayerName + " is not getting out of the penalty box");
                 _players.CurrentPlayer.GoToPenaltyBox();
             }
-        }
-
-        private void AskQuestion()
-        {
-            Console.WriteLine(_questions.CurrentCategory(_players.CurrentPlayer.Place).QuestionList.First());
-            _questions.CurrentCategory(_players.CurrentPlayer.Place).QuestionList.RemoveFirst();
         }
 
         public bool WasCorrectlyAnswered()

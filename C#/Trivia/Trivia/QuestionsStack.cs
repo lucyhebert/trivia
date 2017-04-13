@@ -6,7 +6,7 @@ namespace Trivia
     {
         public string CategoryName { get; set; }
 
-        public LinkedList<string> QuestionList { get; set; }
+        public LinkedList<string> QuestionList { get; private set; }
 
         public QuestionsStack(string categoryName)
         {

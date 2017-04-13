@@ -1,10 +1,11 @@
+using System;
 using System.Collections.Generic;
 
 namespace Trivia
 {
     public class Questions
     {
-        public List<QuestionsStack> Stacks { get; private set; }
+        private List<QuestionsStack> Stacks { get; set; }
 
         public Questions()
         {
@@ -20,6 +21,13 @@ namespace Trivia
         public QuestionsStack CurrentCategory(int index)
         {
             return Stacks[index % 4]; 
+        }
+
+        public void AskQuestion(int index)
+        {
+            Console.WriteLine("The category is " + CurrentCategory(index));
+            Console.WriteLine(CurrentCategory(index).QuestionList.First);
+            CurrentCategory(index).QuestionList.RemoveFirst();
         }
     }
 }

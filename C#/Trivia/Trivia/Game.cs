@@ -8,20 +8,13 @@ namespace Trivia
     {
         private readonly Players _players;
 
-        readonly List<QuestionsStack> _categories = new List<QuestionsStack>();
-
-        private readonly QuestionsStack _popCategory = new QuestionsStack("Pop");
-        private readonly QuestionsStack _scienceCategory = new QuestionsStack("Science");
-        private readonly QuestionsStack _sportsCategory = new QuestionsStack("Sports");
-        private readonly QuestionsStack _rockCategory = new QuestionsStack("Rock");
+        private readonly Questions _questions;
 
         public Game(Players players)
         {
             _players = players;
-            _categories.Add(_popCategory);
-            _categories.Add(_scienceCategory);
-            _categories.Add(_sportsCategory);
-            _categories.Add(_rockCategory);
+            _questions = new Questions();
+            
         }
 
         public void Roll(int roll)
@@ -38,7 +31,7 @@ namespace Trivia
                 Console.WriteLine(_players.CurrentPlayer.PlayerName
                         + "'s new location is "
                         + _players.CurrentPlayer.Place);
-                Console.WriteLine("The category is " + CurrentCategory(_players.CurrentPlayer.Place));
+                Console.WriteLine("The category is " + _questions.CurrentCategory(_players.CurrentPlayer.Place));
                 AskQuestion();
             }
             else
@@ -50,14 +43,8 @@ namespace Trivia
 
         private void AskQuestion()
         {
-            Console.WriteLine(CurrentCategory(_players.CurrentPlayer.Place).QuestionList.First());
-            CurrentCategory(_players.CurrentPlayer.Place).QuestionList.RemoveRange(0,1);
-        }
-
-        private QuestionsStack CurrentCategory(int index)
-        {
-            var currentCategory = _categories[index % 4];
-            return currentCategory;
+            Console.WriteLine(_questions.CurrentCategory(_players.CurrentPlayer.Place).QuestionList.First());
+            _questions.CurrentCategory(_players.CurrentPlayer.Place).QuestionList.RemoveFirst();
         }
 
         public bool WasCorrectlyAnswered()

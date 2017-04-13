@@ -6,16 +6,16 @@ namespace Trivia
     {
         public string CategoryName { get; set; }
 
-        public List<string> QuestionList { get; set; }
+        public LinkedList<string> QuestionList { get; set; }
 
         public QuestionsStack(string categoryName)
         {
             CategoryName = categoryName;
-            QuestionList = new List<string>();
+            QuestionList = new LinkedList<string>();
 
             for (int i = 0; i < 50; i++)
             {
-                QuestionList.Add(CategoryName + " Question " + i);
+                QuestionList.AddLast(CategoryName + " Question " + i);
             }
         }
     }

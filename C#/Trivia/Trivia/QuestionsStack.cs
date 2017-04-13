@@ -1,22 +1,30 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Trivia
 {
     public class QuestionsStack
     {
-        public string CategoryName { get; set; }
+        private string CategoryName { get; set; }
 
-        public LinkedList<string> QuestionList { get; private set; }
+        private LinkedList<string> QuestionsList { get; set; }
 
         public QuestionsStack(string categoryName)
         {
             CategoryName = categoryName;
-            QuestionList = new LinkedList<string>();
+            QuestionsList = new LinkedList<string>();
 
             for (int i = 0; i < 50; i++)
             {
-                QuestionList.AddLast(CategoryName + " Question " + i);
+                QuestionsList.AddLast(CategoryName + " Question " + i);
             }
+        }
+
+        public void AskQuestion()
+        {
+            Console.WriteLine("The category is " + CategoryName);
+            Console.WriteLine(QuestionsList.First);
+            QuestionsList.RemoveFirst();
         }
     }
 }

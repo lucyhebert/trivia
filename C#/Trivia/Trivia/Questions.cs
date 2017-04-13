@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 
 namespace Trivia
@@ -18,16 +17,14 @@ namespace Trivia
             };
         }
 
-        public QuestionsStack CurrentCategory(int index)
+        private QuestionsStack CurrentStack(int index)
         {
             return Stacks[index % 4]; 
         }
 
         public void AskQuestion(int index)
         {
-            Console.WriteLine("The category is " + CurrentCategory(index));
-            Console.WriteLine(CurrentCategory(index).QuestionList.First);
-            CurrentCategory(index).QuestionList.RemoveFirst();
+            CurrentStack(index).AskQuestion();
         }
     }
 }

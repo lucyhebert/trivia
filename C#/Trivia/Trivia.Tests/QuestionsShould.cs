@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using NFluent;
 using NUnit.Framework;
@@ -10,7 +11,8 @@ namespace Trivia.Tests
         [Test]
         public void AllowFourCategories()
         {
-            var questions = new Questions();
+            List<String> categories = new List<string>();
+            var questions = new Questions(categories);
 
             Check.That((questions.AskQuestion(0))[0]).Matches(".*Rock.*");
             Check.That((questions.AskQuestion(4))[0]).Matches(".*Rock.*");
@@ -19,7 +21,13 @@ namespace Trivia.Tests
         [Test]
         public void AllowFiveCategories()
         {
-            var questions = new Questions();
+            List<String> categories = new List<string>();
+            categories.Add("Rock");
+            categories.Add("Sports");
+            categories.Add("Sciences");
+            categories.Add("Pop");
+            categories.Add("Histoire");
+            var questions = new Questions(categories);
 
             Check.That((questions.AskQuestion(0))[0]).Matches(".*Rock.*");
             Check.That((questions.AskQuestion(4))[0]).DoesNotMatch(".*Rock.*");

@@ -5,7 +5,6 @@ namespace Trivia
     public class Game
     {
         private readonly Players _players;
-
         private readonly Questions _questions;
 
         public Game(Players players, Questions questions)

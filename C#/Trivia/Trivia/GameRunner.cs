@@ -20,20 +20,8 @@ namespace Trivia
                 players.AddAPlayer("Sue");
 
                 List<String> categories = new List<string>();
-                //categories.Add("Rock");
-                //categories.Add("Sports");
-                //categories.Add("Sciences");
-                //categories.Add("Pop");
-                //categories.Add("Histoire");
 
-                if (categories.Count == 0)
-                {
-                    questions = new Questions();
-                }
-                else
-                {
-                    questions = new Questions(categories);
-                }
+                questions = new Questions(categories);
                 
 
                 Game aGame = new Game(players, questions);

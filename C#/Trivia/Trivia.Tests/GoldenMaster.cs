@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using ApprovalTests;
 using ApprovalTests.Reporters;
 using NUnit.Framework;
 
@@ -17,6 +18,7 @@ namespace Trivia.Tests
             Console.SetOut(stringWriter);
             GameRunner.Main(null);
             Console.SetOut(previousConsoleOut);
+            Approvals.Verify(stringWriter);
         }
     }
 }

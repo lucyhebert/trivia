@@ -8,10 +8,10 @@ namespace Trivia
 
         private readonly Questions _questions;
 
-        public Game(Players players)
+        public Game(Players players, Questions questions)
         {
             _players = players;
-            _questions = new Questions();
+            _questions = questions;
             
         }
 
@@ -29,7 +29,9 @@ namespace Trivia
                 Console.WriteLine(_players.CurrentPlayer.PlayerName
                         + "'s new location is "
                         + _players.CurrentPlayer.Place);
-                _questions.AskQuestion(_players.CurrentPlayer.Place);
+                string[] question = _questions.AskQuestion(_players.CurrentPlayer.Place);
+                Console.WriteLine("The category is " + question[0]);
+                Console.WriteLine(question[1]);
             }
             else
             {

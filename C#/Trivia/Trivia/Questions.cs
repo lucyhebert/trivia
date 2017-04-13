@@ -17,14 +17,27 @@ namespace Trivia
             };
         }
 
-        private QuestionsStack CurrentStack(int index)
+        public Questions(List<string> categoriesList )
         {
-            return Stacks[index % 4]; 
+            Stacks = new List<QuestionsStack>();
+            foreach (var category in categoriesList)
+            {
+                Stacks.Add(new QuestionsStack(category));
+            }
         }
 
-        public void AskQuestion(int index)
+        private QuestionsStack CurrentStack(int index)
         {
-            CurrentStack(index).AskQuestion();
+            return Stacks[index % Stacks.Count]; 
+        }
+
+        public string[] AskQuestion(int index)
+        {
+            string[] result = new string[2];
+            result[0] = CurrentStack(index).GetCategoryName();
+            result[1] = CurrentStack(index).GetQuestion();
+            CurrentStack(index).RemoveQuestion();
+            return result;
         }
     }
 }

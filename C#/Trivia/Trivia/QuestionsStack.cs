@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Trivia
 {
@@ -16,14 +16,27 @@ namespace Trivia
 
             for (int i = 0; i < 50; i++)
             {
-                QuestionsList.AddLast(CategoryName + " Question " + i);
+                AddQuestion(i);
             }
         }
 
-        public void AskQuestion()
+        private void AddQuestion(int i)
         {
-            Console.WriteLine("The category is " + CategoryName);
-            Console.WriteLine(QuestionsList.First);
+            QuestionsList.AddLast(CategoryName + " Question " + i);
+        }
+
+        public string GetQuestion()
+        {
+            return QuestionsList.First();
+        }
+
+        public string GetCategoryName()
+        {
+            return CategoryName;
+        }
+
+        public void RemoveQuestion()
+        {
             QuestionsList.RemoveFirst();
         }
     }

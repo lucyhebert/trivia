@@ -8,12 +8,12 @@ namespace Trivia
     {
         private readonly Players _players;
 
-        readonly List<Category> _categories = new List<Category>();
+        readonly List<QuestionsStack> _categories = new List<QuestionsStack>();
 
-        private readonly Category _popCategory = new Category("Pop");
-        private readonly Category _scienceCategory = new Category("Science");
-        private readonly Category _sportsCategory = new Category("Sports");
-        private readonly Category _rockCategory = new Category("Rock");
+        private readonly QuestionsStack _popCategory = new QuestionsStack("Pop");
+        private readonly QuestionsStack _scienceCategory = new QuestionsStack("Science");
+        private readonly QuestionsStack _sportsCategory = new QuestionsStack("Sports");
+        private readonly QuestionsStack _rockCategory = new QuestionsStack("Rock");
 
         public Game(Players players)
         {
@@ -23,11 +23,6 @@ namespace Trivia
             _categories.Add(_sportsCategory);
             _categories.Add(_rockCategory);
         }
-
-        //public bool IsPlayable()
-        //{
-        //    return (_players.Count >= 2);
-        //}
 
         public void Roll(int roll)
         {
@@ -56,10 +51,10 @@ namespace Trivia
         private void AskQuestion()
         {
             Console.WriteLine(CurrentCategory(_players.CurrentPlayer.Place).QuestionList.First());
-            CurrentCategory(_players.CurrentPlayer.Place).QuestionList.RemoveFirst();
+            CurrentCategory(_players.CurrentPlayer.Place).QuestionList.RemoveRange(0,1);
         }
 
-        private Category CurrentCategory(int index)
+        private QuestionsStack CurrentCategory(int index)
         {
             var currentCategory = _categories[index % 4];
             return currentCategory;

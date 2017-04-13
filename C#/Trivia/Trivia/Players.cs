@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Trivia
 {
@@ -18,8 +19,12 @@ namespace Trivia
         public bool AddAPlayer(String playerName)
         {
             Player player = new Player(playerName);
+            if (!ListePlayers.Any())
+            {
+                CurrentPlayer = player;
+            }
             ListePlayers.Add(player);
-            CurrentPlayer = player;
+            //CurrentPlayer = player;
             Console.WriteLine(playerName + " was added");
             Console.WriteLine("They are player number " + NbPlayers());
             return true;

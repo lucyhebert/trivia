@@ -38,9 +38,14 @@ namespace Trivia
             IsInPenaltyBox = true;
         }
 
-        public void GoOutFromPenaltyBox()
+        //public void GoOutFromPenaltyBox()
+        //{
+        //    IsInPenaltyBox = false;
+        //}
+
+        public bool IsWinner()
         {
-            IsInPenaltyBox = false;
+            return GoldCoins == 6;
         }
     }
 }

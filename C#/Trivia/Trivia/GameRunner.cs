@@ -41,7 +41,7 @@ namespace Trivia
                     {
                         _isAWinner = aGame.WasCorrectlyAnswered();
                     }
-                } while (_isAWinner);
+                } while (!_isAWinner);
             }
         }
     }

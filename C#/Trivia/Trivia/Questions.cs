@@ -6,27 +6,16 @@ namespace Trivia
     {
         private List<QuestionsStack> Stacks { get; set; }
 
-        //public Questions()
-        //{
-        //    Stacks = new List<QuestionsStack>
-        //    {
-        //        new QuestionsStack("Rock"),
-        //        new QuestionsStack("Sports"),
-        //        new QuestionsStack("Science"),
-        //        new QuestionsStack("Pop")
-        //    };
-        //}
-
         public Questions(List<string> categoriesList )
         {
             if (categoriesList.Count == 0)
             {
                 Stacks = new List<QuestionsStack>
                 {
-                    new QuestionsStack("Rock"),
-                    new QuestionsStack("Sports"),
+                    new QuestionsStack("Pop"),
                     new QuestionsStack("Science"),
-                    new QuestionsStack("Pop")
+                    new QuestionsStack("Sports"),
+                    new QuestionsStack("Rock")
                 };
             }
             else

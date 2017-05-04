@@ -10,10 +10,10 @@ namespace Trivia.Tests
         {
             var questionsFileRepository = new QuestionsFileRepository();
 
-            var questions = questionsFileRepository.GetQuestions("Pop", 1);
+            var questions = questionsFileRepository.GetQuestions("Pop", 3);
 
-            Check.That(questions).HasSize(1);
-            Check.That(questions).ContainsExactly("Question test");
+            Check.That(questions).HasSize(3);
+            Check.That(questions).Contains("Question test 2");
         }
     }
 }

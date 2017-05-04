@@ -14,8 +14,8 @@ namespace Trivia.Tests
             List<String> categories = new List<string>();
             var questions = new Questions(categories);
 
-            Check.That((questions.AskQuestion(0))[0]).Matches(".*Rock.*");
-            Check.That((questions.AskQuestion(4))[0]).Matches(".*Rock.*");
+            Check.That((questions.AskQuestion(0))[0]).Matches(".*Pop.*");
+            Check.That((questions.AskQuestion(4))[0]).Matches(".*Pop.*");
         }
 
         [Test]

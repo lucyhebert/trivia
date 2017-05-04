@@ -6,15 +6,12 @@ namespace Trivia
     {
         private readonly Players _players;
         private readonly Questions _questions;
-        private readonly IQuestionsRepository _repository;
 
         public bool GoOutFromPenaltyBox;
 
-        public Game(Players players, Questions questions, IQuestionsRepository repository)
-        {
+        public Game(Players players, Questions questions) {
             _players = players;
             _questions = questions;
-            _repository = repository;
 
         }
 

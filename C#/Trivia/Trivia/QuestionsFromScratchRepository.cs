@@ -9,12 +9,12 @@ namespace Trivia
 
         public LinkedList<string> GetQuestions(string category, int number)
         {
-            LinkedList<string> QuestionsList = new LinkedList<string>();
+            LinkedList<string> questionsList = new LinkedList<string>();
             for (int i = 0; i < number; i++)
             {
-                QuestionsList.AddLast(category + " Question " + i);
+                questionsList.AddLast(category + " Question " + i);
             }
-            return QuestionsList;
+            return questionsList;
         }
     }
 }

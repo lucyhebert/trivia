@@ -25,7 +25,7 @@ namespace Trivia
                 questions = new Questions(categories, repository);
                 
 
-                Game aGame = new Game(players, questions, repository);
+                Game aGame = new Game(players, questions);
 
 
                 Random rand = new Random(i);

@@ -5,8 +5,8 @@ using System.Text;
 
 namespace Trivia
 {
-    interface IQuestionsRepository
+    public interface IQuestionsRepository
     {
-        List<string> GetQuestions(String category, int number);
+        LinkedList<string> GetQuestions(String category, int number);
     }
 }

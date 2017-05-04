@@ -5,9 +5,9 @@ using System.Text;
 
 namespace Trivia
 {
-    class QuestionsFileRepository : IQuestionsRepository
+    public class QuestionsFileRepository : IQuestionsRepository
     {
-        public List<string> GetQuestions(string category, int number)
+        public LinkedList<string> GetQuestions(string category, int number)
         {
             throw new NotImplementedException();
         }

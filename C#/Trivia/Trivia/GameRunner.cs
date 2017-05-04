@@ -14,6 +14,7 @@ namespace Trivia
             {
                 Players players = new Players();
                 Questions questions = null;
+                QuestionsFromScratchRepository repository = new QuestionsFromScratchRepository();
 
                 players.AddAPlayer("Chet");
                 players.AddAPlayer("Pat");
@@ -21,10 +22,10 @@ namespace Trivia
 
                 List<String> categories = new List<string>();
 
-                questions = new Questions(categories);
+                questions = new Questions(categories, repository);
                 
 
-                Game aGame = new Game(players, questions);
+                Game aGame = new Game(players, questions, repository);
 
 
                 Random rand = new Random(i);

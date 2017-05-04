@@ -1,15 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Trivia
 {
-    class QuestionsFromScratchRepository : IQuestionsRepository
+    public class QuestionsFromScratchRepository : IQuestionsRepository
     {
-        public List<string> GetQuestions(string category, int number)
+
+
+        public LinkedList<string> GetQuestions(string category, int number)
         {
-            throw new NotImplementedException();
+            LinkedList<string> QuestionsList = new LinkedList<string>();
+            for (int i = 0; i < number; i++)
+            {
+                QuestionsList.AddLast(category + " Question " + i);
+            }
+            return QuestionsList;
         }
     }
 }

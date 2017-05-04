@@ -6,16 +6,16 @@ namespace Trivia
     {
         private List<QuestionsStack> Stacks { get; set; }
 
-        public Questions(List<string> categoriesList )
+        public Questions(List<string> categoriesList, IQuestionsRepository repository )
         {
             if (categoriesList.Count == 0)
             {
                 Stacks = new List<QuestionsStack>
                 {
-                    new QuestionsStack("Pop"),
-                    new QuestionsStack("Science"),
-                    new QuestionsStack("Sports"),
-                    new QuestionsStack("Rock")
+                    new QuestionsStack("Pop", repository),
+                    new QuestionsStack("Science", repository),
+                    new QuestionsStack("Sports", repository),
+                    new QuestionsStack("Rock", repository)
                 };
             }
             else
@@ -23,7 +23,7 @@ namespace Trivia
                 Stacks = new List<QuestionsStack>();
                 foreach (var category in categoriesList)
                 {
-                    Stacks.Add(new QuestionsStack(category));
+                    Stacks.Add(new QuestionsStack(category, repository));
                 }
             }
         }

@@ -62,7 +62,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IQuestionsRepository.cs" />
     <Compile Include="Questions.cs" />
+    <Compile Include="QuestionsDbRepository.cs" />
+    <Compile Include="QuestionsFileRepository.cs" />
+    <Compile Include="QuestionsFromScratchRepository.cs" />
     <Compile Include="QuestionsStack.cs" />
     <Compile Include="Players.cs" />
     <Compile Include="Game.cs" />
@@ -94,6 +98,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

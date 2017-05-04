@@ -31,6 +31,7 @@ namespace Trivia.Tests
 
             Check.That((questions.AskQuestion(0))[0]).Matches(".*Rock.*");
             Check.That((questions.AskQuestion(4))[0]).DoesNotMatch(".*Rock.*");
+            Check.That((questions.AskQuestion(4))[0]).Matches(".*Histoire.*");
         }
     }
 }

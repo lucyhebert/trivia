@@ -14,7 +14,7 @@ namespace Trivia
             {
                 Players players = new Players();
                 Questions questions = null;
-                QuestionsFromScratchRepository repository = new QuestionsFromScratchRepository();
+                var repository = new QuestionsFileRepository();
 
                 players.AddAPlayer("Chet");
                 players.AddAPlayer("Pat");

@@ -12,9 +12,11 @@ namespace Trivia
             int i;
             for (i = 0; i < 10; i++)
             {
-                Players players = new Players();
-                Questions questions = null;
                 var repository = new QuestionsFileRepository();
+                var questionUi = new ConsoleUI();
+
+                Players players = new Players(questionUi);
+                Questions questions = null;
 
                 players.AddAPlayer("Chet");
                 players.AddAPlayer("Pat");
@@ -25,7 +27,7 @@ namespace Trivia
                 questions = new Questions(categories, repository);
                 
 
-                Game aGame = new Game(players, questions);
+                Game aGame = new Game(players, questions, questionUi);
 
 
                 Random rand = new Random(i);

@@ -62,6 +62,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConsoleUI.cs" />
+    <Compile Include="IQuestionUI.cs" />
     <Compile Include="IQuestionsRepository.cs" />
     <Compile Include="Questions.cs" />
     <Compile Include="QuestionsDbRepository.cs" />

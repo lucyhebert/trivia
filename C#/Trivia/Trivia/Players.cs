@@ -6,11 +6,15 @@ namespace Trivia
 {
     public class Players
     {
-        public Players()
+
+        public Players(IQuestionUI questionUi)
         {
             ListePlayers = new List<Player>();
             CurrentPlayer = null;
+            QuestionUi = questionUi;
         }
+
+        public IQuestionUI QuestionUi { get; private set; }
 
         public Player CurrentPlayer { get; private set; }
 
@@ -18,7 +22,7 @@ namespace Trivia
 
         public bool AddAPlayer(String playerName)
         {
-            Player player = new Player(playerName);
+            Player player = new Player(playerName, QuestionUi);
             if (!ListePlayers.Any())
             {
                 CurrentPlayer = player;

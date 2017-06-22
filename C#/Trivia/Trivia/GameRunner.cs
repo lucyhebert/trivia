@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using Trivia.DataAccess;
+using Trivia.Domain;
+using Trivia.Presentation;
 
 namespace Trivia
 {

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Trivia
+﻿namespace Trivia.Domain
 {
     public class Game
     {

@@ -1,5 +1,6 @@
 ﻿using NFluent;
 using NUnit.Framework;
+using Trivia.DataAccess;
 
 namespace Trivia.Tests
 {

@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using Trivia.Domain;
 
-namespace Trivia
+namespace Trivia.DataAccess
 {
     public class QuestionsDbRepository : IQuestionsRepository
     {

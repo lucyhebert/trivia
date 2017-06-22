@@ -1,6 +1,7 @@
 ﻿using System;
+using Trivia.Domain;
 
-namespace Trivia
+namespace Trivia.Presentation
 {
     public class ConsoleUI : IQuestionUI
     {

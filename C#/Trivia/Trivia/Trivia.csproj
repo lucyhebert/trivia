@@ -63,17 +63,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Presentation\ConsoleUI.cs" />
-    <Compile Include="Domaine\IQuestionUI.cs" />
-    <Compile Include="Domaine\IQuestionsRepository.cs" />
-    <Compile Include="Domaine\Questions.cs" />
+    <Compile Include="Domain\IQuestionUI.cs" />
+    <Compile Include="Domain\IQuestionsRepository.cs" />
+    <Compile Include="Domain\Questions.cs" />
     <Compile Include="DataAccess\QuestionsDbRepository.cs" />
     <Compile Include="DataAccess\QuestionsFileRepository.cs" />
     <Compile Include="DataAccess\QuestionsFromScratchRepository.cs" />
-    <Compile Include="Domaine\QuestionsStack.cs" />
-    <Compile Include="Domaine\Players.cs" />
-    <Compile Include="Domaine\Game.cs" />
+    <Compile Include="Domain\QuestionsStack.cs" />
+    <Compile Include="Domain\Players.cs" />
+    <Compile Include="Domain\Game.cs" />
     <Compile Include="GameRunner.cs" />
-    <Compile Include="Domaine\Player.cs" />
+    <Compile Include="Domain\Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

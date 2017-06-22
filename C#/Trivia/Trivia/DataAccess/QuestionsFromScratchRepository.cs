@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Trivia.Domain;
 
-namespace Trivia
+namespace Trivia.DataAccess
 {
     public class QuestionsFromScratchRepository : IQuestionsRepository
     {

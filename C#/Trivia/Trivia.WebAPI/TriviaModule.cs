@@ -9,9 +9,22 @@ namespace Trivia.WebAPI
 {
     public class TriviaModule : Nancy.NancyModule
     {
+
+        private static Game _aGame;
+        private static WebUI _questionUi;
+
         public TriviaModule()
         {
             Post["/newGame"] = NewGame;
+            Post["/roll"] = Roll;
+        }
+
+        private dynamic Roll(dynamic o)
+        {
+            _questionUi.Clear();
+            var random = new Random();
+            _aGame.Roll(random.Next(5) + 1);
+            return _questionUi.Message;
         }
 
         private dynamic NewGame(dynamic o)
@@ -19,9 +32,9 @@ namespace Trivia.WebAPI
             var newGame = this.Bind<NewGame>();
 
             var repository = new QuestionsFromScratchRepository();
-            var questionUi = new WebUI();
+            _questionUi = new WebUI();
 
-            var players = new Players(questionUi);
+            var players = new Players(_questionUi);
 
             foreach (var userName in newGame.UserNames)
             {
@@ -32,9 +45,9 @@ namespace Trivia.WebAPI
 
             var questions = new Questions(categories, repository);
 
-            var aGame = new Game(players, questions, questionUi);
-            
-            return questionUi.Message;
+            _aGame = new Game(players, questions, _questionUi);
+
+            return _questionUi.Message;
         }
     }
 
@@ -47,6 +60,11 @@ namespace Trivia.WebAPI
         }
 
         public string Message { get; set; }
+
+        public void Clear()
+        {
+            Message = string.Empty;
+        }
     }
 
     public class NewGame
